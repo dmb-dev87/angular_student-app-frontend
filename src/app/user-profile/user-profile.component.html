@@ -1,0 +1,55 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-8">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title">Student Profile</h4>
+                  </div>
+                  <div class="card-body">
+                      <form>
+                          <div class="row">
+                            <div class="col-md-3">
+                              <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Total Score" type="number" [(ngModel)]="student.total_score" name="total_score" disabled>
+                              </mat-form-field>
+                            </div>
+                            <div class="col-md-3">
+                              <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Student ID" type="number" [(ngModel)]="student.student_id" name="student_id">
+                              </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                              <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Student Name" [(ngModel)]="student.student_name" name="student_name">
+                              </mat-form-field>
+                            </div>
+                          </div>
+                          <div *ngFor="let subject of student.subject_names; let i=index; trackBy:indexTracker" class="row">
+                            <div class="col-md-3">
+                              <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Subject Name" [(ngModel)]="subject.subject_name" name="subject_name_{{i}}" />
+                              </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                              <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Subject Description" [(ngModel)]="subject.description" name="description_{{i}}">
+                              </mat-form-field>
+                            </div>
+                            <div class="col-md-3">
+                              <mat-select placeholder="Select Levels" name="level" [(value)]="subject.level" (selectionChange)="calcTotal()">
+                                <mat-option *ngFor="let level of levels" [value]="level.value">
+                                  {{ level.viewValue }}
+                                </mat-option>
+                              </mat-select>
+                            </div>
+                          </div>
+                          <button mat-raised-button type="submit" class="btn btn-success pull-right" (click)="saveStudent()">Save Student</button>
+                          <div class="clearfix"></div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
