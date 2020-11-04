@@ -24,10 +24,15 @@ export class TableListComponent implements OnInit {
       data => {
         this.students = data
         },
-      err => console.error(err),
-      () => {
-        console.log("students loaded.");
-      }
+      err => {},
+      () => {}
     );
+  }
+
+  private deleteStudent(id) {
+    this.studentService.deleteStudent(id).toPromise().then(() => {
+      window.alert("The student is successfully deleted.");
+      window.location.reload();
+    });
   }
 }

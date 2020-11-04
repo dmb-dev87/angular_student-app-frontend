@@ -41,7 +41,8 @@
                       {{student.subject_names.length}}
                     </td>
                     <td>
-                      <button mat-raised-button class="btn btn-danger pull-left" [routerLink]="['/student-profile', student.id]">Edit</button>
+                      <button mat-raised-button class="btn btn-primary pull-left" [routerLink]="['/student-profile', student.id]">Edit</button>
+                      <button mat-raised-button class="btn btn-danger pull-left" (click)="deleteStudent(student.id)">Delete</button>
                     </td>
                   </tr>
                 </tbody>

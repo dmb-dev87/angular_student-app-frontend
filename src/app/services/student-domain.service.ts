@@ -43,4 +43,8 @@ export class StudentDomainService {
     let data = JSON.stringify(student);
     return this.http.put(`${API_URL}/${id}`, data);
   }
+
+  deleteStudent(id) {
+    return this.http.delete(`${API_URL}/${id}`);
+  }
 }

@@ -37,7 +37,6 @@ export class UserProfileComponent implements OnInit {
         .subscribe(
           (student: any) => {
             this.student = student;
-            console.log("+++++++++++++++", this.student);
           },
           error => {
             this.student = new Student();
@@ -71,8 +70,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   saveStudent() {
-    console.log("+++++++++++", this.student);
-
+    this.calcTotal();
     if (this.id === null) {
       this.studentService.createStudent(this.student).toPromise().then(() => {
         window.alert("The student is successfully created.");
